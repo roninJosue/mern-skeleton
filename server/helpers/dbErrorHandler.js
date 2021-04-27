@@ -28,7 +28,7 @@ const getUniqueErrorMessage = (err) => {
     );
 
     output =
-      fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + "already exists";
+      fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " already exists";
   } catch (ex) {
     output = "Unique field already exists";
   }
