@@ -4,11 +4,12 @@ export default () => {
             <head>
                 <meta charset="utf-8">
                 <title>MERN skeleton</title>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             </head>
-            <body>
-                <div id="root">
-                    <h1>Hello World!</h1>
-                </div>
+            <body>  
+                <div id="root"></div>
+                <script type="text/javascript" src="/dist/bundle.js"></script>
             </body>
         </html>
     `
