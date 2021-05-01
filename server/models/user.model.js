@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
   updated: Date,
   hashed_password: {
     type: String,
-    required: "Password is required A",
+    required: "Password is required",
   },
   salt: String,
 });
@@ -42,7 +42,7 @@ UserSchema.path("hashed_password").validate(function (v) {
   }
 
   if (this.isNew && !this._password) {
-    this.invalidate("password", "Password is required B");
+    this.invalidate("password", "Password is required");
   }
 }, null);
 

@@ -37,6 +37,8 @@ export default function Home(){
                 <Typography variant="body2" component="p">
                     Welcome to the MEARN Skeleton home page. 
                     <Link to="/users">Users</Link>
+                    <Link to="/signup">Signup</Link>
+                    <Link to="/signin">Signin</Link>
                 </Typography>
             </CardContent>
         </Card>
