@@ -2,7 +2,7 @@ import { signin, signout } from "./api-auth";
 
 const auth = {
   isAuthenticated() {
-    if (typeof window !== "undefined") {
+    if (typeof window === "undefined") {
       return false;
     }
 

@@ -5,7 +5,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import unicornbikeImg from "./../assets/images/unicornbike.jpg";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -35,10 +34,7 @@ export default function Home(){
             <CardContent>
 
                 <Typography variant="body2" component="p">
-                    Welcome to the MEARN Skeleton home page. 
-                    <Link to="/users">Users</Link>
-                    <Link to="/signup">Signup</Link>
-                    <Link to="/signin">Signin</Link>
+                    Welcome to the MEARN Skeleton home page.                 
                 </Typography>
             </CardContent>
         </Card>
