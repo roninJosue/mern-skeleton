@@ -1,15 +1,16 @@
-export default () => {
+export default ({markup, css}) => {
     return `<!doctype html>
         <html lang="en">
             <head>
                 <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
                 <title>MERN skeleton</title>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             </head>
             <body>  
-                <div id="root"></div>
+                <div id="root">${markup}</div>
+                <style id="jss-server-side">${css}</style>
                 <script type="text/javascript" src="/dist/bundle.js"></script>
             </body>
         </html>

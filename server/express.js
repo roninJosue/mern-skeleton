@@ -1,14 +1,23 @@
 import express from 'express'
+import path from 'path'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
-import template from './../template'
+import Template from './../template'
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
+
+// Modules for server side rendering
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
+import MainRouter from './../client/MainRouter'
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles'
+import theme from './../client/theme'
+
 import devBundle from './devBundle'
-import path from 'path'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
@@ -27,8 +36,26 @@ app.use('/', authRoutes)
 app.use('/', userRoutes)
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
-app.get('/', (req, res) => {
-    res.status(200).send(template())
+app.get('*', (req, res) => {
+    const sheets = new ServerStyleSheets()
+    const context = {}
+    const markup = ReactDOMServer.renderToString(
+        sheets.collect(
+            <StaticRouter location={req.url} context={context}>
+                <ThemeProvider theme={theme}>
+                    <MainRouter />
+                </ThemeProvider>
+            </StaticRouter>
+        )
+    )
+    if(context.url){
+        return res.redirect(303, context.url)
+    }
+    const css = sheets.toString()
+    res.status(200).send(Template({
+        markup: markup,
+        css: css
+    }))
 })
 
 app.use((err, req, res, next) => {
